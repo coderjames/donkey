@@ -1,0 +1,18 @@
+Remake of Donkey.bas
+---
+
+
+This is a remake of the Donkey.bas game shipped with early versions of PC-DOS and MS-DOS using Ruby and Chingu game programming library.
+
+Car sprite originally lifted from:
+	http://s961.beta.photobucket.com/user/Maxie012/media/Huh/racecars.png.html
+
+
+Donkey sprite originally lifted from:
+	http://yo-yomaster.deviantart.com/art/Evolution-of-a-donkey-sprite-72039588
+
+
+Road graphic is an original created by me.
+
+
+Feel free to do whatever you want with this quick'n'dirty, ugly, poorly-written Ruby code.
