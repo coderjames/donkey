@@ -17,7 +17,7 @@ DONKEY_END_Y = 750
 class Game < Chingu::Window
   def initialize
     super(1024,768)              # leave it blank and it will be 800,600,non fullscreen
-    self.input = { :escape => :exit } # exits example on Escape
+    self.input = { :escape => :exit } # exits game on Escape
 
     # create the road background image. (Do this first so that it is rendered first)
     @parallax = Chingu::Parallax.create(:x => 0, :y => 0, :rotation_center => :top_left)
@@ -39,7 +39,7 @@ class Game < Chingu::Window
     super
     self.caption = "FPS: #{self.fps} milliseconds_since_last_tick: #{self.milliseconds_since_last_tick}"
 
-    @parallax.camera_y -= 1;
+    @parallax.camera_y -= 1; # scrolls the road
 
     if @player.y <= PLAYER_END_Y then
       @player_score += 1
@@ -50,9 +50,7 @@ class Game < Chingu::Window
       @player.speed = [@player.speed + 1, 5].min
     end
 
-    if @donkey.y >= DONKEY_END_Y then
-      @donkey.reset
-    end
+    @donkey.reset if @donkey.y >= DONKEY_END_Y
 
     Player.each_collision(Donkey) do |plr, dnk|
       @donkey_score += 1
@@ -69,7 +67,6 @@ class Player < Chingu::GameObject
   traits :collision_detection
 
   attr_accessor :speed;
-  attr_reader :x;
   attr_reader :y;
 
   def reset
